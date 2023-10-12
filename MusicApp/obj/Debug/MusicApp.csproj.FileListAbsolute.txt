@@ -84,3 +84,5 @@ C:\Users\axelo\OneDrive\Documentos\c#\MusicApp\MusicApp\obj\Debug\MusicApp.cspro
 C:\Users\axelo\OneDrive\Documentos\c#\MusicApp\MusicApp\obj\Debug\MusicApp.csproj.CopyComplete
 C:\Users\axelo\OneDrive\Documentos\c#\MusicApp\MusicApp\obj\Debug\MusicApp.dll
 C:\Users\axelo\OneDrive\Documentos\c#\MusicApp\MusicApp\obj\Debug\MusicApp.pdb
+C:\Users\axelo\OneDrive\Documentos\c#\MusicApp\MusicApp\bin\EntityFramework.dll
+C:\Users\axelo\OneDrive\Documentos\c#\MusicApp\MusicApp\bin\EntityFramework.xml
