@@ -15,7 +15,7 @@ namespace MusicApp.Controllers
             return View();
         }
 
-        private ActionResult ObtenerMetadatos(string filePath)
+        private ActionResult ObtenerMetadatos(string file)
         {
             
 
