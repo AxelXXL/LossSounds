@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BD_LOSS_SOUNDS2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tb_Album">
+    <Key>
+      <PropertyRef Name="ID_ALBUM" />
+    </Key>
+    <Property Name="ID_ALBUM" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_ARTISTA" Type="int" Nullable="false" />
+    <Property Name="Nombre_album" Type="varchar" MaxLength="70" Nullable="false" />
+    <Property Name="Genero" Type="varchar" MaxLength="50" />
+    <Property Name="Año_Album" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tb_Artista">
+    <Key>
+      <PropertyRef Name="ID_ARTISTA" />
+    </Key>
+    <Property Name="ID_ARTISTA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre_Artista" Type="varchar" MaxLength="70" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_Cancion">
+    <Key>
+      <PropertyRef Name="ID_CANCION" />
+    </Key>
+    <Property Name="ID_CANCION" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_ARTISTA" Type="int" Nullable="false" />
+    <Property Name="ID_ALBUM" Type="int" Nullable="false" />
+    <Property Name="Nombre_Cancion" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Numero_Cancion" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Ruta_Audio" Type="varchar" MaxLength="120" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_Playlist">
+    <Key>
+      <PropertyRef Name="ID_PLAYLIST" />
+    </Key>
+    <Property Name="ID_PLAYLIST" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_USUARIO" Type="int" Nullable="false" />
+    <Property Name="ID_CANCION" Type="int" Nullable="false" />
+    <Property Name="Nombre_Playlist" Type="varchar" MaxLength="70" />
+    <Property Name="Fecha_Creacion" Type="datetime" />
+    <Property Name="ID_PRIVACIDAD" Type="int" />
+  </EntityType>
+  <EntityType Name="tb_RolesPrivacidad">
+    <Key>
+      <PropertyRef Name="ID_ROL" />
+    </Key>
+    <Property Name="ID_ROL" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Rol" Type="varchar" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="tb_Usuario">
+    <Key>
+      <PropertyRef Name="ID_USUARIO" />
+    </Key>
+    <Property Name="ID_USUARIO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre_Usuario" Type="varchar" MaxLength="70" />
+    <Property Name="Contrasena" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <Association Name="FK_Album_to_Artista">
+    <End Role="tb_Artista" Type="Self.tb_Artista" Multiplicity="1" />
+    <End Role="tb_Album" Type="Self.tb_Album" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Artista">
+        <PropertyRef Name="ID_ARTISTA" />
+      </Principal>
+      <Dependent Role="tb_Album">
+        <PropertyRef Name="ID_ARTISTA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cancion_to_Album">
+    <End Role="tb_Album" Type="Self.tb_Album" Multiplicity="1" />
+    <End Role="tb_Cancion" Type="Self.tb_Cancion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Album">
+        <PropertyRef Name="ID_ALBUM" />
+      </Principal>
+      <Dependent Role="tb_Cancion">
+        <PropertyRef Name="ID_ALBUM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cancion_to_Artista">
+    <End Role="tb_Artista" Type="Self.tb_Artista" Multiplicity="1" />
+    <End Role="tb_Cancion" Type="Self.tb_Cancion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Artista">
+        <PropertyRef Name="ID_ARTISTA" />
+      </Principal>
+      <Dependent Role="tb_Cancion">
+        <PropertyRef Name="ID_ARTISTA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PlayList_to_Cancion">
+    <End Role="tb_Cancion" Type="Self.tb_Cancion" Multiplicity="1" />
+    <End Role="tb_Playlist" Type="Self.tb_Playlist" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Cancion">
+        <PropertyRef Name="ID_CANCION" />
+      </Principal>
+      <Dependent Role="tb_Playlist">
+        <PropertyRef Name="ID_CANCION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PlayList_to_RolesPrivacidad">
+    <End Role="tb_RolesPrivacidad" Type="Self.tb_RolesPrivacidad" Multiplicity="0..1" />
+    <End Role="tb_Playlist" Type="Self.tb_Playlist" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_RolesPrivacidad">
+        <PropertyRef Name="ID_ROL" />
+      </Principal>
+      <Dependent Role="tb_Playlist">
+        <PropertyRef Name="ID_PRIVACIDAD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PlayList_to_Usuario">
+    <End Role="tb_Usuario" Type="Self.tb_Usuario" Multiplicity="1" />
+    <End Role="tb_Playlist" Type="Self.tb_Playlist" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Usuario">
+        <PropertyRef Name="ID_USUARIO" />
+      </Principal>
+      <Dependent Role="tb_Playlist">
+        <PropertyRef Name="ID_USUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BD_LOSS_SOUNDS2ModelStoreContainer">
+    <EntitySet Name="tb_Album" EntityType="Self.tb_Album" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_Artista" EntityType="Self.tb_Artista" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_Cancion" EntityType="Self.tb_Cancion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_Playlist" EntityType="Self.tb_Playlist" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_RolesPrivacidad" EntityType="Self.tb_RolesPrivacidad" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_Usuario" EntityType="Self.tb_Usuario" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Album_to_Artista" Association="Self.FK_Album_to_Artista">
+      <End Role="tb_Artista" EntitySet="tb_Artista" />
+      <End Role="tb_Album" EntitySet="tb_Album" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cancion_to_Album" Association="Self.FK_Cancion_to_Album">
+      <End Role="tb_Album" EntitySet="tb_Album" />
+      <End Role="tb_Cancion" EntitySet="tb_Cancion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cancion_to_Artista" Association="Self.FK_Cancion_to_Artista">
+      <End Role="tb_Artista" EntitySet="tb_Artista" />
+      <End Role="tb_Cancion" EntitySet="tb_Cancion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PlayList_to_Cancion" Association="Self.FK_PlayList_to_Cancion">
+      <End Role="tb_Cancion" EntitySet="tb_Cancion" />
+      <End Role="tb_Playlist" EntitySet="tb_Playlist" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PlayList_to_RolesPrivacidad" Association="Self.FK_PlayList_to_RolesPrivacidad">
+      <End Role="tb_RolesPrivacidad" EntitySet="tb_RolesPrivacidad" />
+      <End Role="tb_Playlist" EntitySet="tb_Playlist" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PlayList_to_Usuario" Association="Self.FK_PlayList_to_Usuario">
+      <End Role="tb_Usuario" EntitySet="tb_Usuario" />
+      <End Role="tb_Playlist" EntitySet="tb_Playlist" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
