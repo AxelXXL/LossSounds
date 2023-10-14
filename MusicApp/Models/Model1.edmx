@@ -13,7 +13,7 @@
           <Property Name="ID_ARTISTA" Type="int" Nullable="false" />
           <Property Name="Nombre_album" Type="varchar" MaxLength="70" Nullable="false" />
           <Property Name="Genero" Type="varchar" MaxLength="50" />
-          <Property Name="Año_Album" Type="datetime" />
+          <Property Name="Año_Album" Type="int" />
         </EntityType>
         <EntityType Name="tb_Artista">
           <Key>
@@ -32,6 +32,7 @@
           <Property Name="Nombre_Cancion" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Numero_Cancion" Type="decimal" Precision="18" Scale="0" />
           <Property Name="Ruta_Audio" Type="varchar" MaxLength="120" Nullable="false" />
+          <Property Name="Duracion_Cancion" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="tb_Playlist">
           <Key>
@@ -176,7 +177,7 @@
           <Property Name="ID_ARTISTA" Type="Int32" Nullable="false" />
           <Property Name="Nombre_album" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Genero" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Año_Album" Type="DateTime" Precision="3" />
+          <Property Name="Año_Album" Type="Int32" />
           <NavigationProperty Name="tb_Artista" Relationship="Self.FK_Album_to_Artista" FromRole="tb_Album" ToRole="tb_Artista" />
           <NavigationProperty Name="tb_Cancion" Relationship="Self.FK_Cancion_to_Album" FromRole="tb_Album" ToRole="tb_Cancion" />
         </EntityType>
@@ -199,6 +200,7 @@
           <Property Name="Nombre_Cancion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Numero_Cancion" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="Ruta_Audio" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Duracion_Cancion" Type="Int32" Nullable="false" />
           <NavigationProperty Name="tb_Album" Relationship="Self.FK_Cancion_to_Album" FromRole="tb_Cancion" ToRole="tb_Album" />
           <NavigationProperty Name="tb_Artista" Relationship="Self.FK_Cancion_to_Artista" FromRole="tb_Cancion" ToRole="tb_Artista" />
           <NavigationProperty Name="tb_Playlist" Relationship="Self.FK_PlayList_to_Cancion" FromRole="tb_Cancion" ToRole="tb_Playlist" />
@@ -306,7 +308,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="BD_LOSS_SOUNDSEntities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="BD_LOSS_SOUNDSEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tb_Album" EntityType="Self.tb_Album" />
           <EntitySet Name="tb_Artista" EntityType="Self.tb_Artista" />
           <EntitySet Name="tb_Cancion" EntityType="Self.tb_Cancion" />
@@ -343,7 +345,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="BD_LOSS_SOUNDSModelStoreContainer" CdmEntityContainer="BD_LOSS_SOUNDSEntities2">
+        <EntityContainerMapping StorageEntityContainer="BD_LOSS_SOUNDSModelStoreContainer" CdmEntityContainer="BD_LOSS_SOUNDSEntities">
           <EntitySetMapping Name="tb_Album">
             <EntityTypeMapping TypeName="BD_LOSS_SOUNDSModel.tb_Album">
               <MappingFragment StoreEntitySet="tb_Album">
@@ -372,6 +374,7 @@
                 <ScalarProperty Name="Nombre_Cancion" ColumnName="Nombre_Cancion" />
                 <ScalarProperty Name="Numero_Cancion" ColumnName="Numero_Cancion" />
                 <ScalarProperty Name="Ruta_Audio" ColumnName="Ruta_Audio" />
+                <ScalarProperty Name="Duracion_Cancion" ColumnName="Duracion_Cancion" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

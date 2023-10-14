@@ -4,13 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="c35dc19174af4205a5ec30fda96b4a5b" Name="Diagram1">
-        <EntityTypeShape EntityType="BD_LOSS_SOUNDSModel.tb_Album" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+      <Diagram DiagramId="e9ac43dd813a464d97f5eb5974f12c38" Name="Diagram1">
+        <EntityTypeShape EntityType="BD_LOSS_SOUNDSModel.tb_Album" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="BD_LOSS_SOUNDSModel.tb_Artista" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BD_LOSS_SOUNDSModel.tb_Cancion" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="BD_LOSS_SOUNDSModel.tb_Playlist" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="BD_LOSS_SOUNDSModel.tb_RolesPrivacidad" Width="1.5" PointX="5.25" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="BD_LOSS_SOUNDSModel.tb_Usuario" Width="1.5" PointX="5.25" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_LOSS_SOUNDSModel.tb_Playlist" Width="1.5" PointX="7.5" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_LOSS_SOUNDSModel.tb_RolesPrivacidad" Width="1.5" PointX="5.25" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_LOSS_SOUNDSModel.tb_Usuario" Width="1.5" PointX="5.25" PointY="7.125" IsExpanded="true" />
         <AssociationConnector Association="BD_LOSS_SOUNDSModel.FK_Album_to_Artista" ManuallyRouted="false" />
         <AssociationConnector Association="BD_LOSS_SOUNDSModel.FK_Cancion_to_Album" ManuallyRouted="false" />
         <AssociationConnector Association="BD_LOSS_SOUNDSModel.FK_Cancion_to_Artista" ManuallyRouted="false" />
