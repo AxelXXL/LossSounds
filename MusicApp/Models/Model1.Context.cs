@@ -13,10 +13,10 @@ namespace MusicApp.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class BD_LOSS_SOUNDSEntities2 : DbContext
+    public partial class BD_LOSS_SOUNDSEntities1 : DbContext
     {
-        public BD_LOSS_SOUNDSEntities2()
-            : base("name=BD_LOSS_SOUNDSEntities2")
+        public BD_LOSS_SOUNDSEntities1()
+            : base("name=BD_LOSS_SOUNDSEntities1")
         {
         }
     
