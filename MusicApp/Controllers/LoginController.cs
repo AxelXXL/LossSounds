@@ -23,32 +23,47 @@ namespace MusicApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login(tb_Usuario user)
+        public ActionResult Login(tb_Usuario userr)
         {
             // Aquí debes realizar la validación del usuario y contraseña.
             // Puedes consultar tu base de datos u otro sistema de autenticación.
             // Si las credenciales son válidas, inicia sesión y redirige a la página principal.
             try
             {
-                var validacion = db.tb_Usuario.Where(a => a.Nombre_Usuario == user.Nombre_Usuario && a.Contrasena == user.Contrasena)
-                                              .FirstOrDefault();
+                var validacion = db.tb_Usuario
+                    .Where(a => a.Nombre_Usuario == userr.Nombre_Usuario && a.Contrasena == userr.Contrasena);
+               var idUser = db.tb_Usuario
+                    .Where(a => a.Nombre_Usuario == userr.Nombre_Usuario && a.Contrasena == userr.Contrasena)
+                    .Select(c => new {
+                        ID = c.ID_USUARIO
+                    })
+                    .FirstOrDefault();
+                
                 if (validacion != null)
                 {
-                    FormsAuthentication.SetAuthCookie(user.Nombre_Usuario, false);
+                    tb_Usuario oUser = validacion.First();
+                    Session["User"] = oUser;
+                    Session["Name"] = userr.Nombre_Usuario.ToString();
+                    Session["IdUser"] = idUser.ID;
+                    
                     return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    return Content("Usuario invalido");
                 }
                
 
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError("", "Usuario o contraseña incorrectos");
+                return Content("Ocurrió un error "+ex.Message);
             }
            
            
 
            
-            return View();
+            
         }
 
         public ActionResult Logout()

@@ -18,7 +18,7 @@ else
 }
 
 <div>
-    <h2>@saludo</h2>
+    <h2>@saludo @Session["Name"] @Session["IdUser"]</h2>
     <h2>@DateTime.Now.Hour:@DateTime.Now.Minute</h2>
 </div>
 <section>
@@ -65,7 +65,7 @@ else
     });
 
     function AddNovedades(data) {
-        let TemplateIn = "<div id='contCanciones'>";
+        let TemplateIn = "<div id='contCanciones' >";
         let TemplateFin = "</div>";
         let TextIn = "<p>";
         let TextFin = "</p>";
