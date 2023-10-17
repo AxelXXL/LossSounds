@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -49,19 +50,32 @@ namespace MusicApp.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID_CANCION,ID_ARTISTA,ID_ALBUM,Nombre_Cancion,Numero_Cancion,Ruta_Audio")] tb_Cancion tb_Cancion)
+        public ActionResult Create([Bind(Include = "ID_CANCION,ID_ARTISTA,ID_ALBUM,Nombre_Cancion,Numero_Cancion,Ruta_Audio,PortadaFile")] tb_Cancion tb_Cancion)
         {
             if (ModelState.IsValid)
             {
-                db.tb_Cancion.Add(tb_Cancion);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (tb_Cancion.PortadaFile != null)
+                {
+                    byte[] imageData;
+                    using (var binaryReader = new BinaryReader(tb_Cancion.PortadaFile.InputStream))
+                    {
+                        imageData = binaryReader.ReadBytes(tb_Cancion.PortadaFile.ContentLength);
+                    }
+                    tb_Cancion.Portada = imageData;
+                    // Guardar 'imageData' en la base de datos y luego redirigir a otra vista.
+                    db.tb_Cancion.Add(tb_Cancion);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+               
             }
+        
 
             ViewBag.ID_ALBUM = new SelectList(db.tb_Album, "ID_ALBUM", "Nombre_album", tb_Cancion.ID_ALBUM);
             ViewBag.ID_ARTISTA = new SelectList(db.tb_Artista, "ID_ARTISTA", "Nombre_Artista", tb_Cancion.ID_ARTISTA);
             return View(tb_Cancion);
         }
+
 
         // GET: tb_Cancion/Edit/5
         public ActionResult Edit(int? id)
@@ -85,7 +99,7 @@ namespace MusicApp.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID_CANCION,ID_ARTISTA,ID_ALBUM,Nombre_Cancion,Numero_Cancion,Ruta_Audio")] tb_Cancion tb_Cancion)
+        public ActionResult Edit([Bind(Include = "ID_CANCION,ID_ARTISTA,ID_ALBUM,Nombre_Cancion,Numero_Cancion,Ruta_Audio,Portada")] tb_Cancion tb_Cancion)
         {
             if (ModelState.IsValid)
             {

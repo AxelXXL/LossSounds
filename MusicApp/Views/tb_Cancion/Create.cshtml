@@ -6,10 +6,10 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Create", "tb_Cancion", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>tb_Cancion</h4>
         <hr />
@@ -51,6 +51,19 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Ruta_Audio, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Ruta_Audio, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PortadaFile, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.Portada, new { htmlAttributes = new { @class = "form-control" } })*@
+                @*<img src="@Url.Action("GetImage", "Image", null)" alt="Imagen" />*@
+                @*<input type="file" name="PortadaFile" id="file" />*@
+                @Html.TextBoxFor(model => model.PortadaFile, new { type = "file", @class = "form-control" })
+
+
+                @Html.ValidationMessageFor(model => model.PortadaFile, "", new { @class = "text-danger" })
             </div>
         </div>
 

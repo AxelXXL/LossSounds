@@ -11,13 +11,15 @@ namespace MusicApp.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Web;
+
     public partial class tb_Cancion
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tb_Cancion()
         {
             this.tb_Playlist = new HashSet<tb_Playlist>();
+            this.tb_Interacciones = new HashSet<tb_Interacciones>();
         }
     
         public int ID_CANCION { get; set; }
@@ -26,10 +28,14 @@ namespace MusicApp.Models
         public string Nombre_Cancion { get; set; }
         public Nullable<decimal> Numero_Cancion { get; set; }
         public string Ruta_Audio { get; set; }
-    
+        public HttpPostedFileBase PortadaFile { get; set; }
+        public byte[] Portada { get; set; }
+
         public virtual tb_Album tb_Album { get; set; }
         public virtual tb_Artista tb_Artista { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tb_Playlist> tb_Playlist { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tb_Interacciones> tb_Interacciones { get; set; }
     }
 }

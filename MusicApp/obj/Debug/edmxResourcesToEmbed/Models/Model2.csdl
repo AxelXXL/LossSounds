@@ -34,6 +34,8 @@
     <NavigationProperty Name="tb_Album" Relationship="Self.FK_Cancion_to_Album" FromRole="tb_Cancion" ToRole="tb_Album" />
     <NavigationProperty Name="tb_Artista" Relationship="Self.FK_Cancion_to_Artista" FromRole="tb_Cancion" ToRole="tb_Artista" />
     <NavigationProperty Name="tb_Playlist" Relationship="Self.FK_PlayList_to_Cancion" FromRole="tb_Cancion" ToRole="tb_Playlist" />
+    <NavigationProperty Name="tb_Interacciones" Relationship="BD_LOSS_SOUNDS2Model.FK_Interacciones_to_CANCION" FromRole="tb_Cancion" ToRole="tb_Interacciones" />
+    <Property Name="Portada" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
   <EntityType Name="tb_Playlist">
     <Key>
@@ -65,6 +67,8 @@
     <Property Name="Nombre_Usuario" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
     <Property Name="Contrasena" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="tb_Playlist" Relationship="Self.FK_PlayList_to_Usuario" FromRole="tb_Usuario" ToRole="tb_Playlist" />
+    <NavigationProperty Name="tb_Interacciones" Relationship="BD_LOSS_SOUNDS2Model.FK_Interacciones_to_Playlist" FromRole="tb_Usuario" ToRole="tb_Interacciones" />
+    <NavigationProperty Name="tb_Interacciones1" Relationship="BD_LOSS_SOUNDS2Model.FK_Interacciones_to_Usuario" FromRole="tb_Usuario" ToRole="tb_Interacciones" />
   </EntityType>
   <Association Name="FK_Album_to_Artista">
     <End Role="tb_Artista" Type="Self.tb_Artista" Multiplicity="1" />
@@ -169,5 +173,70 @@
       <End Role="tb_Usuario" EntitySet="tb_Usuario" />
       <End Role="tb_Playlist" EntitySet="tb_Playlist" />
     </AssociationSet>
+    <EntitySet Name="tb_Interacciones" EntityType="BD_LOSS_SOUNDS2Model.tb_Interacciones" />
+    <AssociationSet Name="FK_Interacciones_to_CANCION" Association="BD_LOSS_SOUNDS2Model.FK_Interacciones_to_CANCION">
+      <End Role="tb_Cancion" EntitySet="tb_Cancion" />
+      <End Role="tb_Interacciones" EntitySet="tb_Interacciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Interacciones_to_Playlist" Association="BD_LOSS_SOUNDS2Model.FK_Interacciones_to_Playlist">
+      <End Role="tb_Usuario" EntitySet="tb_Usuario" />
+      <End Role="tb_Interacciones" EntitySet="tb_Interacciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Interacciones_to_Usuario" Association="BD_LOSS_SOUNDS2Model.FK_Interacciones_to_Usuario">
+      <End Role="tb_Usuario" EntitySet="tb_Usuario" />
+      <End Role="tb_Interacciones" EntitySet="tb_Interacciones" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="tb_Interacciones">
+    <Key>
+      <PropertyRef Name="ID_Interacciones" />
+    </Key>
+    <Property Name="ID_Interacciones" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_USUARIO" Type="Int32" Nullable="false" />
+    <Property Name="ID_CANCION" Type="Int32" />
+    <Property Name="ID_PLAYLIST" Type="Int32" />
+    <Property Name="Like_" Type="Int32" Nullable="false" />
+    <Property Name="Dislike" Type="Int32" Nullable="false" />
+    <Property Name="Comentarios" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Tiempo" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="tb_Cancion" Relationship="BD_LOSS_SOUNDS2Model.FK_Interacciones_to_CANCION" FromRole="tb_Interacciones" ToRole="tb_Cancion" />
+    <NavigationProperty Name="tb_Usuario" Relationship="BD_LOSS_SOUNDS2Model.FK_Interacciones_to_Playlist" FromRole="tb_Interacciones" ToRole="tb_Usuario" />
+    <NavigationProperty Name="tb_Usuario1" Relationship="BD_LOSS_SOUNDS2Model.FK_Interacciones_to_Usuario" FromRole="tb_Interacciones" ToRole="tb_Usuario" />
+  </EntityType>
+  <Association Name="FK_Interacciones_to_CANCION">
+    <End Type="BD_LOSS_SOUNDS2Model.tb_Cancion" Role="tb_Cancion" Multiplicity="0..1" />
+    <End Type="BD_LOSS_SOUNDS2Model.tb_Interacciones" Role="tb_Interacciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Cancion">
+        <PropertyRef Name="ID_CANCION" />
+      </Principal>
+      <Dependent Role="tb_Interacciones">
+        <PropertyRef Name="ID_CANCION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Interacciones_to_Playlist">
+    <End Type="BD_LOSS_SOUNDS2Model.tb_Usuario" Role="tb_Usuario" Multiplicity="0..1" />
+    <End Type="BD_LOSS_SOUNDS2Model.tb_Interacciones" Role="tb_Interacciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Usuario">
+        <PropertyRef Name="ID_USUARIO" />
+      </Principal>
+      <Dependent Role="tb_Interacciones">
+        <PropertyRef Name="ID_PLAYLIST" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Interacciones_to_Usuario">
+    <End Type="BD_LOSS_SOUNDS2Model.tb_Usuario" Role="tb_Usuario" Multiplicity="1" />
+    <End Type="BD_LOSS_SOUNDS2Model.tb_Interacciones" Role="tb_Interacciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Usuario">
+        <PropertyRef Name="ID_USUARIO" />
+      </Principal>
+      <Dependent Role="tb_Interacciones">
+        <PropertyRef Name="ID_USUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

@@ -31,5 +31,6 @@ namespace MusicApp.Models
         public virtual DbSet<tb_Playlist> tb_Playlist { get; set; }
         public virtual DbSet<tb_RolesPrivacidad> tb_RolesPrivacidad { get; set; }
         public virtual DbSet<tb_Usuario> tb_Usuario { get; set; }
+        public virtual DbSet<tb_Interacciones> tb_Interacciones { get; set; }
     }
 }

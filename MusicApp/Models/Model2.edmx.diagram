@@ -17,6 +17,10 @@
         <AssociationConnector Association="BD_LOSS_SOUNDS2Model.FK_PlayList_to_Cancion" ManuallyRouted="false" />
         <AssociationConnector Association="BD_LOSS_SOUNDS2Model.FK_PlayList_to_RolesPrivacidad" ManuallyRouted="false" />
         <AssociationConnector Association="BD_LOSS_SOUNDS2Model.FK_PlayList_to_Usuario" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BD_LOSS_SOUNDS2Model.tb_Interacciones" Width="1.5" PointX="7.5" PointY="4.5" />
+        <AssociationConnector Association="BD_LOSS_SOUNDS2Model.FK_Interacciones_to_CANCION" />
+        <AssociationConnector Association="BD_LOSS_SOUNDS2Model.FK_Interacciones_to_Playlist" />
+        <AssociationConnector Association="BD_LOSS_SOUNDS2Model.FK_Interacciones_to_Usuario" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

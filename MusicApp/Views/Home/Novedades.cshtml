@@ -1,0 +1,13 @@
+﻿<div class="container">
+    @*@foreach (var cancion in ViewBag.Novedades)
+    {
+        <div class="cancion-div">
+            <h2>@cancion.primeros50Canciones.NombreCancion</h2>
+            <p>Artista: @cancion.NombreArtista</p>
+            <p>Álbum: @cancion.NombreAlbum</p>
+            <img src="data:image/jpeg;base64,@Convert.ToBase64String(cancion.Caratula)" alt="Carátula" />
+        </div>
+    }*@
+    
+</div>
+

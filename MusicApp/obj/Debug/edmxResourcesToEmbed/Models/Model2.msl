@@ -23,6 +23,7 @@
     <EntitySetMapping Name="tb_Cancion">
       <EntityTypeMapping TypeName="BD_LOSS_SOUNDS2Model.tb_Cancion">
         <MappingFragment StoreEntitySet="tb_Cancion">
+          <ScalarProperty Name="Portada" ColumnName="Portada" />
           <ScalarProperty Name="ID_CANCION" ColumnName="ID_CANCION" />
           <ScalarProperty Name="ID_ARTISTA" ColumnName="ID_ARTISTA" />
           <ScalarProperty Name="ID_ALBUM" ColumnName="ID_ALBUM" />
@@ -58,6 +59,20 @@
           <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
           <ScalarProperty Name="Nombre_Usuario" ColumnName="Nombre_Usuario" />
           <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_Interacciones">
+      <EntityTypeMapping TypeName="BD_LOSS_SOUNDS2Model.tb_Interacciones">
+        <MappingFragment StoreEntitySet="tb_Interacciones">
+          <ScalarProperty Name="Tiempo" ColumnName="Tiempo" />
+          <ScalarProperty Name="Comentarios" ColumnName="Comentarios" />
+          <ScalarProperty Name="Dislike" ColumnName="Dislike" />
+          <ScalarProperty Name="Like_" ColumnName="Like_" />
+          <ScalarProperty Name="ID_PLAYLIST" ColumnName="ID_PLAYLIST" />
+          <ScalarProperty Name="ID_CANCION" ColumnName="ID_CANCION" />
+          <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+          <ScalarProperty Name="ID_Interacciones" ColumnName="ID_Interacciones" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

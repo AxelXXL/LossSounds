@@ -134,6 +134,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\SaveMusicController.cs" />
     <Compile Include="Controllers\tb_AlbumController.cs" />
     <Compile Include="Controllers\tb_ArtistaController.cs" />
@@ -166,6 +167,9 @@
       <DependentUpon>Model2.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tb_Cancion.cs">
+      <DependentUpon>Model2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_Interacciones.cs">
       <DependentUpon>Model2.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tb_Playlist.cs">
@@ -255,11 +259,6 @@
     <Content Include="Views\tb_Artista\Details.cshtml" />
     <Content Include="Views\tb_Artista\Edit.cshtml" />
     <Content Include="Views\tb_Artista\Index.cshtml" />
-    <Content Include="Views\tb_Cancion\Create.cshtml" />
-    <Content Include="Views\tb_Cancion\Delete.cshtml" />
-    <Content Include="Views\tb_Cancion\Details.cshtml" />
-    <Content Include="Views\tb_Cancion\Edit.cshtml" />
-    <Content Include="Views\tb_Cancion\Index.cshtml" />
     <Content Include="Views\tb_Playlist\Create.cshtml" />
     <Content Include="Views\tb_Playlist\Delete.cshtml" />
     <Content Include="Views\tb_Playlist\Details.cshtml" />
@@ -275,9 +274,18 @@
     <Content Include="Views\tb_Usuario\Details.cshtml" />
     <Content Include="Views\tb_Usuario\Edit.cshtml" />
     <Content Include="Views\tb_Usuario\Index.cshtml" />
+    <Content Include="Views\tb_Cancion\Create.cshtml" />
+    <Content Include="Views\tb_Cancion\Delete.cshtml" />
+    <Content Include="Views\tb_Cancion\Details.cshtml" />
+    <Content Include="Views\tb_Cancion\Edit.cshtml" />
+    <Content Include="Views\tb_Cancion\Index.cshtml" />
+    <Content Include="Views\Home\Novedades.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Integraciones\" />
     <Folder Include="Views\SaveMusic\" />
   </ItemGroup>
   <ItemGroup>

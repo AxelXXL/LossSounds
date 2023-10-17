@@ -1,0 +1,17 @@
+﻿@model MusicApp.Models.tb_Usuario
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+
+@using (Html.BeginForm("Login", "Login", FormMethod.Post))
+{
+    @Html.LabelFor(Model => Model.Nombre_Usuario)
+    @Html.TextBoxFor(Model => Model.Nombre_Usuario)
+
+    @Html.LabelFor(Model => Model.Contrasena)
+    @Html.PasswordFor(Model => Model.Contrasena)
+
+    <input type="submit" value="Iniciar sesión" />
+}

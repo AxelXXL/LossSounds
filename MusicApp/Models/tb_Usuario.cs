@@ -18,6 +18,8 @@ namespace MusicApp.Models
         public tb_Usuario()
         {
             this.tb_Playlist = new HashSet<tb_Playlist>();
+            this.tb_Interacciones = new HashSet<tb_Interacciones>();
+            this.tb_Interacciones1 = new HashSet<tb_Interacciones>();
         }
     
         public int ID_USUARIO { get; set; }
@@ -26,5 +28,9 @@ namespace MusicApp.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tb_Playlist> tb_Playlist { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tb_Interacciones> tb_Interacciones { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tb_Interacciones> tb_Interacciones1 { get; set; }
     }
 }
