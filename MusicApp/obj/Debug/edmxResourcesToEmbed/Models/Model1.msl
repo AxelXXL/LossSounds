@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="BD_LOSS_SOUNDSModelStoreContainer" CdmEntityContainer="BD_LOSS_SOUNDSEntities1">
+  <EntityContainerMapping StorageEntityContainer="BD_LOSS_SOUNDSModelStoreContainer" CdmEntityContainer="BD_LOSS_SOUNDSEntities">
     <EntitySetMapping Name="tb_Album">
       <EntityTypeMapping TypeName="BD_LOSS_SOUNDSModel.tb_Album">
         <MappingFragment StoreEntitySet="tb_Album">
@@ -33,6 +33,24 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="tb_Comentarios">
+      <EntityTypeMapping TypeName="BD_LOSS_SOUNDSModel.tb_Comentarios">
+        <MappingFragment StoreEntitySet="tb_Comentarios">
+          <ScalarProperty Name="ID_COMENTARIOS" ColumnName="ID_COMENTARIOS" />
+          <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+          <ScalarProperty Name="ID_CANCION" ColumnName="ID_CANCION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_DisLikeMusic">
+      <EntityTypeMapping TypeName="BD_LOSS_SOUNDSModel.tb_DisLikeMusic">
+        <MappingFragment StoreEntitySet="tb_DisLikeMusic">
+          <ScalarProperty Name="ID_DISLIKES" ColumnName="ID_DISLIKES" />
+          <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+          <ScalarProperty Name="ID_CANCION" ColumnName="ID_CANCION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="tb_Playlist">
       <EntityTypeMapping TypeName="BD_LOSS_SOUNDSModel.tb_Playlist">
         <MappingFragment StoreEntitySet="tb_Playlist">
@@ -50,6 +68,15 @@
         <MappingFragment StoreEntitySet="tb_RolesPrivacidad">
           <ScalarProperty Name="ID_ROL" ColumnName="ID_ROL" />
           <ScalarProperty Name="Rol" ColumnName="Rol" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_Seguidos">
+      <EntityTypeMapping TypeName="BD_LOSS_SOUNDSModel.tb_Seguidos">
+        <MappingFragment StoreEntitySet="tb_Seguidos">
+          <ScalarProperty Name="ID_SEGUIDOS" ColumnName="ID_SEGUIDOS" />
+          <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+          <ScalarProperty Name="ID_ARTISTA" ColumnName="ID_ARTISTA" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

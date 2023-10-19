@@ -16,6 +16,8 @@ namespace MusicApp.Models
     {
         public tb_Cancion()
         {
+            this.tb_Comentarios = new HashSet<tb_Comentarios>();
+            this.tb_DisLikeMusic = new HashSet<tb_DisLikeMusic>();
             this.tb_Playlist = new HashSet<tb_Playlist>();
         }
     
@@ -29,6 +31,8 @@ namespace MusicApp.Models
     
         public virtual tb_Album tb_Album { get; set; }
         public virtual tb_Artista tb_Artista { get; set; }
+        public virtual ICollection<tb_Comentarios> tb_Comentarios { get; set; }
+        public virtual ICollection<tb_DisLikeMusic> tb_DisLikeMusic { get; set; }
         public virtual ICollection<tb_Playlist> tb_Playlist { get; set; }
     }
 }

@@ -18,6 +18,7 @@ namespace MusicApp.Models
         {
             this.tb_Album = new HashSet<tb_Album>();
             this.tb_Cancion = new HashSet<tb_Cancion>();
+            this.tb_Seguidos = new HashSet<tb_Seguidos>();
         }
     
         public int ID_ARTISTA { get; set; }
@@ -25,5 +26,6 @@ namespace MusicApp.Models
     
         public virtual ICollection<tb_Album> tb_Album { get; set; }
         public virtual ICollection<tb_Cancion> tb_Cancion { get; set; }
+        public virtual ICollection<tb_Seguidos> tb_Seguidos { get; set; }
     }
 }

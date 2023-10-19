@@ -16,13 +16,19 @@ namespace MusicApp.Models
     {
         public tb_Usuario()
         {
+            this.tb_Comentarios = new HashSet<tb_Comentarios>();
+            this.tb_DisLikeMusic = new HashSet<tb_DisLikeMusic>();
             this.tb_Playlist = new HashSet<tb_Playlist>();
+            this.tb_Seguidos = new HashSet<tb_Seguidos>();
         }
     
         public int ID_USUARIO { get; set; }
         public string Nombre_Usuario { get; set; }
         public string Contrasena { get; set; }
     
+        public virtual ICollection<tb_Comentarios> tb_Comentarios { get; set; }
+        public virtual ICollection<tb_DisLikeMusic> tb_DisLikeMusic { get; set; }
         public virtual ICollection<tb_Playlist> tb_Playlist { get; set; }
+        public virtual ICollection<tb_Seguidos> tb_Seguidos { get; set; }
     }
 }

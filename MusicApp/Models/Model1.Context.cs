@@ -13,17 +13,10 @@ namespace MusicApp.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-<<<<<<< HEAD
     public partial class BD_LOSS_SOUNDSEntities : DbContext
     {
         public BD_LOSS_SOUNDSEntities()
             : base("name=BD_LOSS_SOUNDSEntities")
-=======
-    public partial class BD_LOSS_SOUNDSEntities1 : DbContext
-    {
-        public BD_LOSS_SOUNDSEntities1()
-            : base("name=BD_LOSS_SOUNDSEntities1")
->>>>>>> 34e47eda0313c6bb3798fb4b5dae8ad45bc1ca00
         {
         }
     
@@ -35,8 +28,11 @@ namespace MusicApp.Models
         public DbSet<tb_Album> tb_Album { get; set; }
         public DbSet<tb_Artista> tb_Artista { get; set; }
         public DbSet<tb_Cancion> tb_Cancion { get; set; }
+        public DbSet<tb_Comentarios> tb_Comentarios { get; set; }
+        public DbSet<tb_DisLikeMusic> tb_DisLikeMusic { get; set; }
         public DbSet<tb_Playlist> tb_Playlist { get; set; }
         public DbSet<tb_RolesPrivacidad> tb_RolesPrivacidad { get; set; }
+        public DbSet<tb_Seguidos> tb_Seguidos { get; set; }
         public DbSet<tb_Usuario> tb_Usuario { get; set; }
     }
 }
