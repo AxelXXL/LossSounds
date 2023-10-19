@@ -5,9 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using TagLib;
-using TagLib.Flac;
 using MusicApp.Models;
-using System.IO;
 
 namespace MusicApp.Controllers
 {
@@ -22,64 +20,87 @@ namespace MusicApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult ObtenerMetadatosCancion(string rutaArchivo)
+        public ActionResult ObtenerMetadatosCancion(string archivo)
         {
-            if (System.IO.File.Exists(rutaArchivo))
+            if (archivo != null && archivo.Length > 0)
             {
-                using (TagLib.File archivoAudio = TagLib.File.Create(rutaArchivo))
+                try
                 {
-                    string tituloCancion = archivoAudio.Tag.Title;
-                    string[] artistas = archivoAudio.Tag.Performers;
-                    string album = archivoAudio.Tag.Album;
-                    string genero = archivoAudio.Tag.FirstGenre;
-                    int añoAlbum = (int)archivoAudio.Tag.Year;
-                    int numeroCancion = (int)archivoAudio.Tag.Track;
-                    int duracionSegundos = (int)archivoAudio.Properties.Duration.TotalSeconds;
-
-                    // Comprobar si el álbum ya existe en la base de datos
-                    tb_Album albumExistente = db.tb_Album.FirstOrDefault(a => a.Nombre_album == album);
-                    if (albumExistente == null)
+                    using (File archivoAudio = TagLib.File.Create(new File.LocalFileAbstraction(archivo)))
                     {
-                        albumExistente = new tb_Album
+                        string[] artistas = archivoAudio.Tag.Performers;
+                        string nomArtista = artistas[0];
+                        string nomAlbum = archivoAudio.Tag.Album;
+                        string genero = archivoAudio.Tag.FirstGenre;
+                        int añoAlbum = (int)archivoAudio.Tag.Year;
+                        int numeroCancion = (int)archivoAudio.Tag.Track;
+                        int duracionSegundos = (int)archivoAudio.Properties.Duration.TotalSeconds;
+                        string tituloCancion = archivoAudio.Tag.Title;
+
+                        // Buscar si el artista ya existe en la bd
+                        var artistaID = (from a in db.tb_Artista
+                                         where a.Nombre_Artista == nomArtista
+                                         select a.ID_ARTISTA).FirstOrDefault();
+
+                        // Buscar si el álbum ya existe en la bd
+                        var albumID = (from a in db.tb_Album
+                                       where a.Nombre_album == nomAlbum
+                                       select a.ID_ALBUM).FirstOrDefault();
+
+                        if (artistaID != 0)
                         {
-                            Nombre_album = album,
-                            Genero = genero, // Establecer el género
-                            Año_Album = añoAlbum // Establecer el año del álbum
-                        };
-                        db.tb_Album.Add(albumExistente);
-                        db.SaveChanges(); // Guardar el álbum para obtener su ID
-                    }
-
-                    tb_Cancion cancion = new tb_Cancion
-                    {
-                        Nombre_Cancion = tituloCancion,
-                        Duracion_Cancion = duracionSegundos,
-                        Numero_Cancion = numeroCancion,
-                        ID_ALBUM = albumExistente.ID_ALBUM
-                    };
-
-                    foreach (var artistaNombre in artistas)
-                    {
-                        // Comprobar si el artista ya existe en la base de datos
-                        tb_Artista artistaExistente = db.tb_Artista.FirstOrDefault(a => a.Nombre_Artista == artistaNombre);
-                        if (artistaExistente == null)
+                            // El artista ya existe en la base de datos, no es necesario crearlo de nuevo
+                        }
+                        else
                         {
-                            artistaExistente = new tb_Artista
+                            // El artista no existe en la base de datos, crea un nuevo registro
+                            tb_Artista artista = new tb_Artista
                             {
-                                Nombre_Artista = artistaNombre
+                                Nombre_Artista = nomArtista,
                             };
-                            db.tb_Artista.Add(artistaExistente);
+                            db.tb_Artista.Add(artista);
                             db.SaveChanges(); // Guardar el artista para obtener su ID
+                            artistaID = artista.ID_ARTISTA; // Obtener el ID del artista recién creado
                         }
 
-                        cancion.ID_ARTISTA = artistaExistente.ID_ARTISTA;
+                        if (albumID != 0)
+                        {
+                            // El álbum ya existe en la base de datos, no es necesario crearlo de nuevo
+                        }
+                        else
+                        {
+                            // El álbum no existe en la base de datos, crea un nuevo registro
+                            tb_Album album = new tb_Album
+                            {
+                                Nombre_album = nomAlbum,
+                                Genero = genero,
+                                Año_Album = añoAlbum,
+                                ID_ARTISTA = artistaID, // Asignar el ID del artista
+                            };
+                            db.tb_Album.Add(album);
+                            db.SaveChanges(); // Guardar el álbum para obtener su ID
+                            albumID = album.ID_ALBUM; // Obtener el ID del álbum recién creado
+                        }
+
+                        // Ahora puedes crear la canción utilizando artistaID y albumID
+                        tb_Cancion cancion = new tb_Cancion
+                        {
+                            Nombre_Cancion = tituloCancion,
+                            Duracion_Cancion = duracionSegundos,
+                            Numero_Cancion = numeroCancion,
+                            ID_ARTISTA = artistaID,
+                            ID_ALBUM = albumID,
+                            Ruta_Audio = archivo,
+                        };
+                        db.tb_Cancion.Add(cancion);
+                        db.SaveChanges();
                     }
 
-                    cancion.Ruta_Audio = rutaArchivo;
-                    db.tb_Cancion.Add(cancion);
-                    db.SaveChanges();
-
                     return RedirectToAction("Index");
+                }
+                catch (Exception ex)
+                {
+                    return View(ex);
                 }
             }
             else
@@ -87,7 +108,5 @@ namespace MusicApp.Controllers
                 return HttpNotFound("El archivo no fue encontrado");
             }
         }
-
-
     }
 }

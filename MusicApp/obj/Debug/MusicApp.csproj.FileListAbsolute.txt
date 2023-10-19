@@ -51,6 +51,7 @@ C:\Users\axelo\OneDrive\Documentos\c#\MusicApp\MusicApp\bin\roslyn\vbc.rsp
 C:\Users\axelo\OneDrive\Documentos\c#\MusicApp\MusicApp\bin\roslyn\VBCSCompiler.exe
 C:\Users\axelo\OneDrive\Documentos\c#\MusicApp\MusicApp\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\axelo\OneDrive\Documentos\c#\MusicApp\MusicApp\bin\Antlr3.Runtime.dll
+C:\Users\axelo\OneDrive\Documentos\c#\MusicApp\MusicApp\bin\EntityFramework.dll
 C:\Users\axelo\OneDrive\Documentos\c#\MusicApp\MusicApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\axelo\OneDrive\Documentos\c#\MusicApp\MusicApp\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\axelo\OneDrive\Documentos\c#\MusicApp\MusicApp\bin\Newtonsoft.Json.dll
@@ -61,7 +62,9 @@ C:\Users\axelo\OneDrive\Documentos\c#\MusicApp\MusicApp\bin\System.Web.Razor.dll
 C:\Users\axelo\OneDrive\Documentos\c#\MusicApp\MusicApp\bin\System.Web.WebPages.Deployment.dll
 C:\Users\axelo\OneDrive\Documentos\c#\MusicApp\MusicApp\bin\System.Web.WebPages.dll
 C:\Users\axelo\OneDrive\Documentos\c#\MusicApp\MusicApp\bin\System.Web.WebPages.Razor.dll
+C:\Users\axelo\OneDrive\Documentos\c#\MusicApp\MusicApp\bin\TagLibSharp.dll
 C:\Users\axelo\OneDrive\Documentos\c#\MusicApp\MusicApp\bin\WebGrease.dll
+C:\Users\axelo\OneDrive\Documentos\c#\MusicApp\MusicApp\bin\EntityFramework.xml
 C:\Users\axelo\OneDrive\Documentos\c#\MusicApp\MusicApp\bin\System.Web.Helpers.xml
 C:\Users\axelo\OneDrive\Documentos\c#\MusicApp\MusicApp\bin\System.Web.Mvc.xml
 C:\Users\axelo\OneDrive\Documentos\c#\MusicApp\MusicApp\bin\System.Web.Optimization.xml
@@ -70,6 +73,8 @@ C:\Users\axelo\OneDrive\Documentos\c#\MusicApp\MusicApp\bin\System.Web.WebPages.
 C:\Users\axelo\OneDrive\Documentos\c#\MusicApp\MusicApp\bin\System.Web.WebPages.Deployment.xml
 C:\Users\axelo\OneDrive\Documentos\c#\MusicApp\MusicApp\bin\System.Web.WebPages.Razor.xml
 C:\Users\axelo\OneDrive\Documentos\c#\MusicApp\MusicApp\bin\Newtonsoft.Json.xml
+C:\Users\axelo\OneDrive\Documentos\c#\MusicApp\MusicApp\bin\TagLibSharp.pdb
+C:\Users\axelo\OneDrive\Documentos\c#\MusicApp\MusicApp\bin\TagLibSharp.xml
 C:\Users\axelo\OneDrive\Documentos\c#\MusicApp\MusicApp\bin\Antlr3.Runtime.pdb
 C:\Users\axelo\OneDrive\Documentos\c#\MusicApp\MusicApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\axelo\OneDrive\Documentos\c#\MusicApp\MusicApp\bin\es\System.Web.Helpers.resources.dll
@@ -84,5 +89,3 @@ C:\Users\axelo\OneDrive\Documentos\c#\MusicApp\MusicApp\obj\Debug\MusicApp.cspro
 C:\Users\axelo\OneDrive\Documentos\c#\MusicApp\MusicApp\obj\Debug\MusicApp.csproj.CopyComplete
 C:\Users\axelo\OneDrive\Documentos\c#\MusicApp\MusicApp\obj\Debug\MusicApp.dll
 C:\Users\axelo\OneDrive\Documentos\c#\MusicApp\MusicApp\obj\Debug\MusicApp.pdb
-C:\Users\axelo\OneDrive\Documentos\c#\MusicApp\MusicApp\bin\EntityFramework.dll
-C:\Users\axelo\OneDrive\Documentos\c#\MusicApp\MusicApp\bin\EntityFramework.xml

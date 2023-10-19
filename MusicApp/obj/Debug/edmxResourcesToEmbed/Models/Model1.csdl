@@ -8,7 +8,7 @@
     <Property Name="ID_ARTISTA" Type="Int32" Nullable="false" />
     <Property Name="Nombre_album" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Genero" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Año_Album" Type="DateTime" Precision="3" />
+    <Property Name="Año_Album" Type="Int32" />
     <NavigationProperty Name="tb_Artista" Relationship="Self.FK_Album_to_Artista" FromRole="tb_Album" ToRole="tb_Artista" />
     <NavigationProperty Name="tb_Cancion" Relationship="Self.FK_Cancion_to_Album" FromRole="tb_Album" ToRole="tb_Cancion" />
   </EntityType>
@@ -31,6 +31,7 @@
     <Property Name="Nombre_Cancion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Numero_Cancion" Type="Decimal" Precision="18" Scale="0" />
     <Property Name="Ruta_Audio" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Duracion_Cancion" Type="Int32" Nullable="false" />
     <NavigationProperty Name="tb_Album" Relationship="Self.FK_Cancion_to_Album" FromRole="tb_Cancion" ToRole="tb_Album" />
     <NavigationProperty Name="tb_Artista" Relationship="Self.FK_Cancion_to_Artista" FromRole="tb_Cancion" ToRole="tb_Artista" />
     <NavigationProperty Name="tb_Playlist" Relationship="Self.FK_PlayList_to_Cancion" FromRole="tb_Cancion" ToRole="tb_Playlist" />
@@ -138,7 +139,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="BD_LOSS_SOUNDSEntities2" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="BD_LOSS_SOUNDSEntities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="tb_Album" EntityType="Self.tb_Album" />
     <EntitySet Name="tb_Artista" EntityType="Self.tb_Artista" />
     <EntitySet Name="tb_Cancion" EntityType="Self.tb_Cancion" />

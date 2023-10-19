@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="BD_LOSS_SOUNDSModelStoreContainer" CdmEntityContainer="BD_LOSS_SOUNDSEntities2">
+  <EntityContainerMapping StorageEntityContainer="BD_LOSS_SOUNDSModelStoreContainer" CdmEntityContainer="BD_LOSS_SOUNDSEntities1">
     <EntitySetMapping Name="tb_Album">
       <EntityTypeMapping TypeName="BD_LOSS_SOUNDSModel.tb_Album">
         <MappingFragment StoreEntitySet="tb_Album">
@@ -29,6 +29,7 @@
           <ScalarProperty Name="Nombre_Cancion" ColumnName="Nombre_Cancion" />
           <ScalarProperty Name="Numero_Cancion" ColumnName="Numero_Cancion" />
           <ScalarProperty Name="Ruta_Audio" ColumnName="Ruta_Audio" />
+          <ScalarProperty Name="Duracion_Cancion" ColumnName="Duracion_Cancion" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
