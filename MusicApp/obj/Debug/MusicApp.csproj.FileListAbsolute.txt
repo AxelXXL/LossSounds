@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\axelo\OneDrive\Documentos\c#\MusicApp\MusicApp\bin\MusicApp.dll.config
 C:\Users\axelo\OneDrive\Documentos\c#\MusicApp\MusicApp\bin\MusicApp.dll
 C:\Users\axelo\OneDrive\Documentos\c#\MusicApp\MusicApp\bin\MusicApp.pdb
@@ -89,3 +90,5 @@ C:\Users\axelo\OneDrive\Documentos\c#\MusicApp\MusicApp\obj\Debug\MusicApp.cspro
 C:\Users\axelo\OneDrive\Documentos\c#\MusicApp\MusicApp\obj\Debug\MusicApp.csproj.CopyComplete
 C:\Users\axelo\OneDrive\Documentos\c#\MusicApp\MusicApp\obj\Debug\MusicApp.dll
 C:\Users\axelo\OneDrive\Documentos\c#\MusicApp\MusicApp\obj\Debug\MusicApp.pdb
+=======
+>>>>>>> 2b2b79520bbfd8eb294085c8c5c477ca1c8a891b
